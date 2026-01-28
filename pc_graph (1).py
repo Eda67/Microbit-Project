@@ -35,11 +35,21 @@ while True:
         hum_v.append(value)
 
     
-    plt.clf()
-    plt.ion()
-    plt.plot(temp_t, temp_v, label="Temperature (°C)")
-    plt.plot(hum_t, hum_v, label="Humidity (%)")
-    plt.xlabel("Time (seconds)")
-    plt.ylabel("Value")
-    plt.legend()
-    plt.pause(0.01)
+
+    fig = plt.figure()
+    ax1 = fig.add_subplot(121)
+    ax2 = fig.add_subplot(122)
+
+    ax1.set_title('Temperature distribution on campus')
+    ax1.set_xlabel('Time (Seconds)')
+    ax1.set_ylabel('Temperature (°C)')
+
+    ax2.set_title('Humidity distribution on campus')
+    ax2.set_xlabel('Time (Seconds)')
+    ax2.set_ylabel('Humidity (%)')
+
+    ax1.scatter(temp_t, temp_v)
+    ax2.scatter(hum_t, hum_v)
+
+    plt.tight_layout()
+    plt.show()
