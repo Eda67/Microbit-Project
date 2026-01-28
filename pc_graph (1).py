@@ -16,6 +16,14 @@ hum_v = []
 
 print("Listening...")          # Just to show the program is running
 
+# We create the graph window and the two plots before the loop
+plt.ion()  
+fig = plt.figure()
+
+ax1 = fig.add_subplot(121)
+ax2 = fig.add_subplot(122)
+
+
 # Runs forever
 while True:
     line = ser.readline().decode("utf-8").strip()
@@ -27,18 +35,15 @@ while True:
     t = time.time() - start_time   #time since the data received
     value = float(value)
 
-    if sensor == "Temp": # Store the data depending on sensor type        
+    if sensor == "Temperature": # Store the data depending on sensor type        
         temp_t.append(t)
         temp_v.append(value)
-    elif sensor == "humidity":
+    elif sensor == "Humidity":
         hum_t.append(t)
         hum_v.append(value)
-
     
-
-    fig = plt.figure()
-    ax1 = fig.add_subplot(121)
-    ax2 = fig.add_subplot(122)
+    ax1.clear()
+    ax2.clear()
 
     ax1.set_title('Temperature distribution on campus')
     ax1.set_xlabel('Time (Seconds)')
@@ -52,4 +57,4 @@ while True:
     ax2.scatter(hum_t, hum_v)
 
     plt.tight_layout()
-    plt.show()
+    plt.pause(0.01)

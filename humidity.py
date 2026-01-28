@@ -10,7 +10,7 @@ while True:
     read_data_registers()
     humidity = calc_humidity()
 
-    msg = "H," + str(humidity)
+    msg = "Humidity:," + str(humidity)
     radio.send(msg)
 
     sleep(500)
