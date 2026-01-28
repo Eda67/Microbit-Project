@@ -14,9 +14,9 @@ while loop:
     read_data_registers()
     temperature = calc_temperature() # degrees C float
     
-    temp = ("Temperature: {} C".format(temperature))
+    msg = "Temperature," + str(temperature)
     
-    radio.send(temp)
+    radio.send(msg)
     
     numOfReadings += 1
     

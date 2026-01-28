@@ -6,8 +6,10 @@ radio.on()
 uart.init(baudrate=115200)
 
 while True:
-msg= radio. receive()
-if msg:
-uart.write(msg + "\n")
-display.scroll(msg)
-sleep
+    msg= radio.receive()
+   
+    if msg:
+    uart.write(msg + "\n")
+  
+    
+   
